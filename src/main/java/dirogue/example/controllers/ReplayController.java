@@ -91,7 +91,18 @@ public class ReplayController extends ControllerBase {
      * Affiche le message et l'image de la rencontre en cours.
      */
     private void showCurrentMessageAndImage() {
-        if (encounters != null && currentIndex >= 0 && currentIndex < encounters.length) {
+        if(currentIndex == 0){
+            var encounter = encounters[currentIndex];
+            Label messageLabel = replayView.getMessageLabel();
+            messageLabel.setText(encounter.rencontre());
+
+            File file = new File("src/main/resources/images/exterieur.png");
+            Image image = new Image(file.toURI().toString());
+
+            ImageView imageView = replayView.getImageView();
+            imageView.setImage(image);
+        }
+        if (encounters != null && currentIndex > 0 && currentIndex < encounters.length) {
             var encounter = encounters[currentIndex];
             Label messageLabel = replayView.getMessageLabel();
             messageLabel.setText(encounter.rencontre());
