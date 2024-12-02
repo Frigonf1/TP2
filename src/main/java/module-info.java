@@ -1,6 +1,7 @@
 module dirogue.example {
     requires transitive javafx.controls;
     requires transitive javafx.graphics;
+    requires jdk.compiler;
 
     opens dirogue.example.controllers to javafx.fxml;
     exports dirogue.example.view;

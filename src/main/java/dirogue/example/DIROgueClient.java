@@ -32,8 +32,8 @@ public class DIROgueClient {
 
 			// TODO: Lire le fichier et envoyer les commandes au serveur ligne par ligne.
 			if (input.equals("load")) {
-				System.out.println("Entrez le chemin du fichier que vous souhaitez charger :");
-				try (BufferedReader fileReader = new BufferedReader(new FileReader(scanner.nextLine().trim()))) {
+				String fileName = "commands.txt";
+				try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
 					String line;
 					while ((line = fileReader.readLine()) != null) {
 						out.println(line);

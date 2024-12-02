@@ -59,22 +59,22 @@ public class MainController extends ControllerBase {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load report");
         File selectedFile = fileChooser.showOpenDialog(mainView.getRoot().getScene().getWindow());
-        if(selectedFile != null) {
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(selectedFile));
-                String line = br.readLine();
-                
+        if (selectedFile != null) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(selectedFile))) {
+                String contenu = "";
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    contenu += (line + "\n");
+                }
+            mainView.getTextArea().setText(contenu);
+            mainView.getReplayButton().setDisable(false);
 
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-
-
         }
 
-        
-        // ...
     }
 }

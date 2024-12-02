@@ -1,5 +1,6 @@
 package dirogue.example.view;
 
+import dirogue.example.controllers.MainController;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -102,7 +103,7 @@ public class MainView extends ViewBase {
 
         loadButton = new Button("Load");
         replayButton = new Button("Replay");
-        replayButton.setDisable(true);
+        replayButton.setDisable(false);
 
         buttonBox.getChildren().addAll(loadButton, replayButton);
         root.getChildren().addAll(buttonBox, new Label("Report"));

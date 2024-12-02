@@ -1,12 +1,19 @@
 package dirogue.example.view;
 
+import com.sun.tools.javac.Main;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * Vue pour le mode de replay.
@@ -124,11 +131,37 @@ public class ReplayView extends ViewBase {
     protected void createUI() {
         //TODO: Créer l'interface utilisateur de Replay
         rootPane = new VBox();
-        messageLabel = new Label();
-        imageView = new ImageView("sample.png");
+        rootPane.setAlignment(Pos.CENTER);
+        rootPane.setPadding(new Insets(20));
+
+        messageLabel = new Label("Replay Mode");
+        Image img = null;
+        try {
+            img = new Image(new FileInputStream("src/main/resources/images/exterieur.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+
+        imageView = new ImageView(img);
+        imageView.setFitHeight(200);
+        imageView.setFitWidth(300);
+        imageView.setPreserveRatio(true);
+
+
+
+        HBox buttonGroup = new HBox();
+        buttonGroup.setSpacing(10);
+        buttonGroup.setAlignment(Pos.CENTER);
+
         forwardButton = new Button("Forward");
         backwardButton = new Button("Backward");
+
+        buttonGroup.getChildren().addAll(forwardButton, backwardButton);
+
         exitButton = new Button("Exit");
+        exitButton.setAlignment(Pos.CENTER);
+
+        rootPane.getChildren().addAll(messageLabel, imageView, buttonGroup, exitButton);
 
         // ...
     }
