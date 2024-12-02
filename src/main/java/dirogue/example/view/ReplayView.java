@@ -137,7 +137,7 @@ public class ReplayView extends ViewBase {
         messageLabel = new Label("Replay Mode");
         Image img = null;
         try {
-            img = new Image(new FileInputStream("src/main/resources/images/exterieur.jpg"));
+            img = new Image(new FileInputStream("src/main/resources/images/sample.png"));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
