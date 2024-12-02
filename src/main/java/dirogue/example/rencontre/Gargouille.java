@@ -11,7 +11,7 @@ public class Gargouille extends Monstre {
 
     @Override
     public String getSprite() {
-        return "src/main/resources/images/sample.png";
+        return "src/main/resources/images/gargouille.png";
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Rien extends Rencontre {
 
     @Override
     public String getSprite() {
-        return "src/main/resources/images/sample.png";
+        return "src/main/resources/images/rien.png";
     }
     
     @Override

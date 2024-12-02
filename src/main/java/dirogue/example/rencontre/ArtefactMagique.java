@@ -11,7 +11,7 @@ public class ArtefactMagique extends Tresor {
 
     @Override
     public String getSprite() {
-        return "src/main/resources/images/sample.png";
+        return "src/main/resources/images/artefact.png";
     }
 
     @Override

@@ -11,7 +11,7 @@ public class Gobelin extends Monstre {
 
     @Override
     public String getSprite() {
-        return "src/main/resources/images/sample.png";
+        return "src/main/resources/images/gobelin.png";
     }
     
     @Override
