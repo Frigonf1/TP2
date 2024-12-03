@@ -127,9 +127,14 @@ public class ReplayView extends ViewBase {
      * Crée l'interface utilisateur pour la vue de replay.
      * Initialise les éléments graphiques tels que les boutons, l'image, et le label.
      */
+
+    // On crée un nouveau VBox qui va contenir de sous-éléments (branches). Celui-ci est centré.
+    // L'élément du haut est le messageLabel, puis l'image juste en dessous. Ces éléments changeront
+    // selon l'étape de l,aventure. Nous avons ajouté une exception si l'image ne charge pas. Le prochain
+    // sous-élément du VBox est un HBox contenant les boutons Forward et Backward. Finalement, le dernier
+    // élément du VBox est le bouton Exit.
     @Override
     protected void createUI() {
-        //TODO: Créer l'interface utilisateur de Replay
         rootPane = new VBox();
         rootPane.setAlignment(Pos.CENTER);
         rootPane.setPadding(new Insets(20));
@@ -142,12 +147,15 @@ public class ReplayView extends ViewBase {
             throw new RuntimeException(e);
         }
 
+        if (img.isError() || img.errorProperty().get()) {
+            System.out.println("Error loading the image");
+            System.out.println(img.exceptionProperty().get().getMessage());
+        }
+
         imageView = new ImageView(img);
         imageView.setFitHeight(200);
         imageView.setFitWidth(300);
         imageView.setPreserveRatio(true);
-
-
 
         HBox buttonGroup = new HBox();
         buttonGroup.setSpacing(10);
@@ -162,7 +170,5 @@ public class ReplayView extends ViewBase {
         exitButton.setAlignment(Pos.CENTER);
 
         rootPane.getChildren().addAll(messageLabel, imageView, buttonGroup, exitButton);
-
-        // ...
     }
 }

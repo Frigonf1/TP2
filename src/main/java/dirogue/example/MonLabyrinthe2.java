@@ -56,12 +56,13 @@ public class MonLabyrinthe2 implements Labyrinthe, Serializable {
         addEdge(e1, e2);
     }
 
+    // On utilise le Map adjList pour ajouter une e2ID comme adjacent à e1ID, et vice-versa. On appelle
+    // aussi la fonction ajouteCorridor(Piece e1, Piece e2), qui ajoute les pièces si elles n'existent pas.
     public void ajouteCorridor(int e1ID, int e2ID) throws PieceNotFoundException {
+        ajouteCorridor(pieces.get(e1ID), pieces.get(e2ID));
         this.adjList.get(e1ID).add(e2ID);
         ajouteCorridor(pieces.get(e1ID), pieces.get(e2ID));
         this.adjList.get(e2ID).add(e1ID);
-        ajouteCorridor(pieces.get(e1ID), pieces.get(e2ID));
-        //TODO: Ajouter un corridor entre deux pièces avec les identifiants fournis
     }
 
     /**
@@ -87,15 +88,16 @@ public class MonLabyrinthe2 implements Labyrinthe, Serializable {
      * @param e La pièce dont les pièces connectées sont recherchées.
      * @return Un tableau de pièces connectées à la pièce donnée.
      */
+
+    // On crée un nouveau ArrayList de Piece, puis, pour chaque pièce connectée à la Piece e
+    // selon le Map ajdList, on ajoute la pièce connectée au ArrayList.
     public Piece[] getPiecesConnectees(Piece e) {
-        List<Integer> connectees = adjList.get(e.getID());
-        if(connectees == null){
-            return new Piece[0];
+        ArrayList<Piece> connectees = new ArrayList<>(); {
+            for(int i: adjList.get(e.getID())) {
+                connectees.add(pieces.get(i));
+            }
         }
-        return connectees.toArray(new Piece[0]);
-
-        //TODO: Trouver les pièces connectées
-
+        return (Piece[])connectees.toArray();
     }
 
     private void addEdge(Piece e1, Piece e2) {

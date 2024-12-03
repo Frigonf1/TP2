@@ -14,7 +14,8 @@ public class DIROgueClient {
 		String serverAddress = "127.0.0.1";
 		int serverPort = 1370;
 
-		// TODO: Se connecter au serveur.
+		// On crée un socket prenant en argument serverAddress ("127.0.0.1") et serverPort (1370).
+		// Ensuite, on imprime un message laissant savoir à l'usager qu'il est connecté.
         try {
 
             Socket socket = new Socket(serverAddress, serverPort);
@@ -30,13 +31,15 @@ public class DIROgueClient {
 			input = scanner.nextLine().trim();
 
 
-			// TODO: Lire le fichier et envoyer les commandes au serveur ligne par ligne.
+			// On demande à l'usager d'entrer le chemin absolu vers le fichier. Le chemin entré est enregistré
+			// dans fileName, puis lu par un BufferedReadeer, puis imprimé.
 			if (input.equals("load")) {
-				String fileName = "commands.txt";
+					System.out.println("Veuilez entrer le file path");
+					String fileName = scanner.nextLine().trim();
 				try (BufferedReader fileReader = new BufferedReader(new FileReader(fileName))) {
 					String line;
 					while ((line = fileReader.readLine()) != null) {
-						out.println(line);
+						System.out.println(line);
 					}
 					System.out.println("Fichier envoyé au serveur.");
 				} catch (IOException e) {

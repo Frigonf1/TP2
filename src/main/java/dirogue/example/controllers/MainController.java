@@ -54,8 +54,10 @@ public class MainController extends ControllerBase {
      * chargement.
      */
     private void loadTextFile() {
-        // TODO: Charger le fichier de rapport avec un FileChooser et afficher le texte
-        // dans la zone de texte, puis activer le bouton de relecture pour l'étape suivante.
+        // On instancie un FileChooser appelé "Load report". Pour le fichier choisi,
+        // si celui-ci n'est pas nul, on le lit avec un BufferedReader et on enregistre
+        // les lignes dans le String contenu. Ce string est ensuite envoyé au mainView et est affiché.
+        // On catch une exception si le fichier n,est pas trouvé.
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Load report");
         File selectedFile = fileChooser.showOpenDialog(mainView.getRoot().getScene().getWindow());
@@ -69,12 +71,9 @@ public class MainController extends ControllerBase {
             mainView.getTextArea().setText(contenu);
             mainView.getReplayButton().setDisable(false);
 
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         }
-
     }
 }

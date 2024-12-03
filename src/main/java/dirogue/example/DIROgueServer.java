@@ -41,6 +41,9 @@ public class DIROgueServer {
 				}
 			});
 
+			// Lorsque la commande "corridor" est entrée, on ajoute un corridor entre les deux
+			// pièces entrées en argument via la fonction ajouteCorridor. Il y a erreur si la pièce
+			// n'est pas trouvée.
             s.addEventHandler((cmd, cmdArgs) -> {
                 if (cmd.equals("corridor")) {
                     int id = Integer.parseInt(cmdArgs[0]);
@@ -50,7 +53,6 @@ public class DIROgueServer {
                     } catch (PieceNotFoundException e) {
                         throw new RuntimeException(e);
                     }
-                    //TODO: Implémenter le handler et ajouter un corridor.
                 }
             });
 
@@ -61,6 +63,8 @@ public class DIROgueServer {
 				}
 			});
 
+			// Lorsque la commande "save" est entrée, le file est sauvegardé via la
+			// fonction sauvegarderRapport.
 			s.addEventHandler((cmd, cmdArgs) -> {
 				if (cmd.equals("save")) {
                     try {
@@ -69,7 +73,6 @@ public class DIROgueServer {
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-					//TODO: Sauvegarder le fichier de rapport de l'aventure.
 				}
 			});
 

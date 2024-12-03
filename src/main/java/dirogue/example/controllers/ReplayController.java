@@ -91,18 +91,8 @@ public class ReplayController extends ControllerBase {
      * Affiche le message et l'image de la rencontre en cours.
      */
     private void showCurrentMessageAndImage() {
-        if(currentIndex == 0){
-            var encounter = encounters[currentIndex];
-            Label messageLabel = replayView.getMessageLabel();
-            messageLabel.setText(encounter.rencontre());
 
-            File file = new File("src/main/resources/images/exterieur.png");
-            Image image = new Image(file.toURI().toString());
-
-            ImageView imageView = replayView.getImageView();
-            imageView.setImage(image);
-        }
-        if (encounters != null && currentIndex > 0 && currentIndex < encounters.length) {
+        if (encounters != null && currentIndex >= 0 && currentIndex < encounters.length) {
             var encounter = encounters[currentIndex];
             Label messageLabel = replayView.getMessageLabel();
             messageLabel.setText(encounter.rencontre());
@@ -118,8 +108,10 @@ public class ReplayController extends ControllerBase {
     /**
      * Méthode pour naviguer vers la rencontre précédente dans le replay.
      */
+
+    // Si l'indexe currentIndex est plus grand grand que 0, on réduit l'indexe de 1, puis retourne
+    // le message et l'image de cet indexe. Si l'indexe est déjà à 0, on retourne le message et l'image courante.
     private void goBackward() {
-        //TODO: Aller à l'étape précédente du rapport. En atteignant la première étape, il devrait rester là et ne pas générer d'erreur.
         if (currentIndex > 0) {
             currentIndex--;
             showCurrentMessageAndImage();
@@ -131,13 +123,16 @@ public class ReplayController extends ControllerBase {
     /**
      * Méthode pour naviguer vers la rencontre suivante dans le replay.
      */
+
+    // Si l'indexe currentIndex est plus petit que le dernier indexe de l'aventure, on l'augmente
+    // de 1, puis on retourne le message et l'image lié au nouvel indexe. Si l'indexe est déjà le maximum,
+    // on retourne le message et l'image de l'indexe courant.
+
     private void goForward() {
         if (currentIndex < encounters.length - 1) {
             currentIndex++;
             showCurrentMessageAndImage();
         }
-        showCurrentMessageAndImage();
-        //TODO: Aller à l'étape suivante du rapport. En atteignant la dernière étape, il devrait rester là et ne pas générer d'erreur.
         showCurrentMessageAndImage();
     }
 
