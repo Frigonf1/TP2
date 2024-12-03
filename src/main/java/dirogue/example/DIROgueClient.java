@@ -19,7 +19,8 @@ public class DIROgueClient {
         try {
 
             Socket socket = new Socket(serverAddress, serverPort);
-            PrintWriter out = new PrintWriter(socket.getOutputStream()); // utilisé pour écrire dans le socket avec des commandes comme println()
+			OutputStreamWriter os = new OutputStreamWriter(socket.getOutputStream());
+            PrintWriter out = new PrintWriter(os); // utilisé pour écrire dans le socket avec des commandes comme println()
 			Scanner scanner = new Scanner(System.in);
 
 			System.out.println("Connecté au serveur " + serverAddress + ":" + serverPort);

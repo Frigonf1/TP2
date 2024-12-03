@@ -67,9 +67,9 @@ public class DIROgueServer {
 			// fonction sauvegarderRapport.
 			s.addEventHandler((cmd, cmdArgs) -> {
 				if (cmd.equals("save")) {
+					String path = cmdArgs[0];
                     try {
-                        String filePath = cmdArgs[0];
-                        m.sauvegarderRapport(filePath);
+                        m.sauvegarderRapport(path);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
