@@ -1,0 +1,14 @@
+François Frigon (20297551) & Ilyes Salhi (20295765)
+
+Rapport d'équipe : 
+
+François s'est occupé des tâches 1 et 2 afin d'établir la connextion au serveur, puis de la tâche 5,qui lance
+une instance de FileChooser afin de pouvoir choisir le fichier rapport.txt. Il s'est aussi occupé des étapes
+8 et 9 qui modifient les boutons Forward et Backward dans la classe ReplayController. Finalement, il a créé
+l'interface utilisateur, à l'étape 10. Il a passé environ 12 heures sur tout cela. 
+
+Ilyes s'est occupé du handler de la classe DIROgueClient, ainsi que de la fonction save (étapes 3 et 4). Il a 
+aussi implémenté les étapes 6 et 7 (fonctions ajouteCorridor et getPiecesConnectees). Il s'est aussi assuré que
+les bonnes exceptions étaient envoyées aux bons endroits dans le code, et a fait une révision globale de toutes les
+tâches. Toutes ces étapes lui ont pris environ 10 heures. 
+
